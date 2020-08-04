@@ -41,6 +41,7 @@ ApplicationWindow {
             onClicked: {
                 console.log("clicked")
                 background.colorIndex++;
+                background.colorIndex = background.colorIndex % colors.length
                 colorAnimation.to = colors[background.colorIndex]
                 colorAnimation.start()
             }
