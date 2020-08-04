@@ -7,6 +7,8 @@ ApplicationWindow {
     height: 480
     title: qsTr("Tabs")
 
+    property var colors: ["#2c9ab7", "#3498db", "#8adcb3", "#f1c40f", "#167c80", "#33495e"]
+
     SwipeView {
         id: swipeView
         anchors.fill: parent
@@ -16,6 +18,32 @@ ApplicationWindow {
         }
 
         Page2Form {
+        }
+    }
+
+    Rectangle {
+        id: background
+        anchors.fill: parent
+        property int colorIndex: 0
+
+        color: colors[1]
+
+
+        ColorAnimation on color {
+            id: colorAnimation
+            to: colors[2]
+            duration: 2000
+        }
+
+        MouseArea {
+
+            anchors.fill: parent
+            onClicked: {
+                console.log("clicked")
+                background.colorIndex++;
+                colorAnimation.to = colors[background.colorIndex]
+                colorAnimation.start()
+            }
         }
     }
 
