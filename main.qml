@@ -21,44 +21,10 @@ ApplicationWindow {
         }
     }
 
-    Rectangle {
+    ColorChangerRectangle {
         id: background
+
         anchors.fill: parent
-        property int colorIndex: 0
-
-        color: colors[1]
-
-
-        ColorAnimation on color {
-            id: colorAnimation
-            to: colors[2]
-            duration: 2000
-        }
-
-        MouseArea {
-
-            anchors.fill: parent
-            onClicked: {
-                console.log("clicked")
-                background.colorIndex++;
-                background.colorIndex = background.colorIndex % colors.length
-                colorAnimation.to = colors[background.colorIndex]
-                colorAnimation.start()
-            }
-        }
-
-        Timer {
-            interval: 10000
-            running: true
-            repeat: true
-            onTriggered: {
-                console.log("timer")
-                background.colorIndex++;
-                background.colorIndex = background.colorIndex % colors.length
-                colorAnimation.to = colors[background.colorIndex]
-                colorAnimation.start()
-            }
-        }
     }
 
     footer: TabBar {
