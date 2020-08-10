@@ -2,7 +2,10 @@ import QtQuick 2.11
 
 Rectangle {
     id: root
-    property int colorIndex: 0
+
+    property int interval: 15000
+    property bool running: true
+
 
     color: colors[1]
 
@@ -13,27 +16,17 @@ Rectangle {
         duration: 2000
     }
 
-    MouseArea {
-
-        anchors.fill: parent
-        onClicked: {
-            console.log("clicked")
-            root.colorIndex++;
-            root.colorIndex = root.colorIndex % colors.length
-            colorAnimation.to = colors[root.colorIndex]
-            colorAnimation.start()
-        }
-    }
-
     Timer {
-        interval: 10000
-        running: true
+        property int colorIndex: 0
+
+        interval: root.interval
+        running: root.running
         repeat: true
         onTriggered: {
             console.log("timer")
-            root.colorIndex++;
-            root.colorIndex = root.colorIndex % colors.length
-            colorAnimation.to = colors[root.colorIndex]
+            colorIndex++;
+            colorIndex = colorIndex % colors.length
+            colorAnimation.to = colors[colorIndex]
             colorAnimation.start()
         }
     }
