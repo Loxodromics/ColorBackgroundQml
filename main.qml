@@ -46,6 +46,19 @@ ApplicationWindow {
                 colorAnimation.start()
             }
         }
+
+        Timer {
+            interval: 10000
+            running: true
+            repeat: true
+            onTriggered: {
+                console.log("timer")
+                background.colorIndex++;
+                background.colorIndex = background.colorIndex % colors.length
+                colorAnimation.to = colors[background.colorIndex]
+                colorAnimation.start()
+            }
+        }
     }
 
     footer: TabBar {
