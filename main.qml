@@ -5,9 +5,7 @@ ApplicationWindow {
     visible: true
     width: 640
     height: 480
-    title: qsTr("Tabs")
-
-    property var colors: ["#2c9ab7", "#3498db", "#8adcb3", "#f1c40f", "#167c80", "#33495e"]
+    title: qsTr("Color Changer")
 
     SwipeView {
         id: swipeView

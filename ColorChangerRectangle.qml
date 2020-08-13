@@ -6,6 +6,8 @@ Rectangle {
     property int interval: 15000
     property bool running: true
 
+    property var colors: ["#2c9ab7", "#3498db", "#8adcb3", "#f1c40f", "#167c80", "#33495e"]
+
 
     color: colors[1]
 
